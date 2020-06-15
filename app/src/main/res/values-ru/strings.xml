@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Шаблон приложения</string>
+    <string name="add_data">Добавить</string>
+    <string name="data_content">Ввод данных</string>
+    <string name="list_data">Сохраненные данные:</string>
+    <string name="no_data">Неверные данные</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">template</string>
+    <string name="add_data">Add</string>
+    <string name="data_content">Data content</string>
+    <string name="list_data">Saved data:</string>
+    <string name="no_data">Wrong data</string>
+</resources>
