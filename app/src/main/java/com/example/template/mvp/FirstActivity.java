@@ -24,6 +24,7 @@ public class FirstActivity extends AppCompatActivity implements ViewContract {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //TODO Launcher Theme
         ((App) getApplication()).getAppComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
