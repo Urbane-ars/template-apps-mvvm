@@ -1,4 +1,4 @@
-package com.example.template.mvp;
+package com.example.template.mvvm;
 
 
 
