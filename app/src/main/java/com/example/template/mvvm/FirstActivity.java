@@ -22,9 +22,9 @@ public class FirstActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //TODO Launcher Theme
-        ((App) getApplication()).getAppComponent().inject(this);
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
+        ((App) getApplication()).getAppComponent().inject(this);
         ActivityFirstBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_first);
         binding.setFistViewModel(viewModel);
         init();
