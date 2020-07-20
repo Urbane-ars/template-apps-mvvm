@@ -1,4 +1,4 @@
-package com.example.template.mvvm
+package com.example.template.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +7,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.template.R
 import com.example.template.databinding.ListItemBinding
-import com.example.template.storage.SomeData
+import com.example.template.datasource.db.SomeData
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class Adapter @Inject constructor(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_HEADER : Int = 0

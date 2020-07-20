@@ -8,7 +8,10 @@
             <import type="android.text.TextUtils"/>
             <variable
                 name="fistViewModel"
-                type="com.example.template.mvvm.FistViewModel" />
+                type="com.example.template.ui.FistViewModel" />
+            <variable
+                name="adapter"
+                type="com.example.template.ui.Adapter" />
         </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,6 +67,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:scrollbars = "vertical"
+            app:adapter="@{adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

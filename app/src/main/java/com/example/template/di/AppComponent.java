@@ -1,6 +1,6 @@
 package com.example.template.di;
 
-import com.example.template.mvvm.FirstActivity;
+import com.example.template.ui.FirstActivity;
 
 import javax.inject.Singleton;
 

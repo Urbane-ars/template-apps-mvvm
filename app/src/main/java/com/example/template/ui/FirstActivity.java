@@ -1,12 +1,10 @@
-package com.example.template.mvvm;
+package com.example.template.ui;
 
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.template.App;
 import com.example.template.R;
@@ -20,6 +18,8 @@ public class FirstActivity extends AppCompatActivity {
 
     @Inject
     FistViewModel viewModel;
+    @Inject
+    Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +28,11 @@ public class FirstActivity extends AppCompatActivity {
         ((App) getApplication()).getAppComponent().inject(this);
         ActivityFirstBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_first);
         binding.setFistViewModel(viewModel);
+        binding.setAdapter(adapter);
         init();
     }
 
     void init(){
-        RecyclerView recyclerView = findViewById(R.id.list_data);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        viewModel.recyclerView = recyclerView;
         viewModel.loadSavedSomeData();
     }
 

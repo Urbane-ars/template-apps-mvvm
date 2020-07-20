@@ -1,4 +1,4 @@
-package com.example.template.mvvm;
+package com.example.template.ui;
 
 import android.view.View;
 import android.widget.EditText;
@@ -10,7 +10,8 @@ import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.template.storage.SomeData;
+import com.example.template.datasource.db.SomeData;
+import com.example.template.repository.MainRepository;
 
 import java.util.List;
 
@@ -20,18 +21,17 @@ import javax.inject.Singleton;
 @Singleton
 public class FistViewModel extends ViewModel{
 
-    Repository repository;
+    MainRepository mainRepository;
     SomeData someData;
     Adapter adapter;
-    RecyclerView recyclerView;
 
 
    public  ObservableField<String> content = new ObservableField<>();
    public ObservableBoolean hasError = new ObservableBoolean();
 
     @Inject
-    public FistViewModel(Repository repository, SomeData someData, Adapter adapter) {
-        this.repository = repository;
+    public FistViewModel(MainRepository mainRepository, SomeData someData, Adapter adapter) {
+        this.mainRepository = mainRepository;
         this.someData = someData;
         this.adapter = adapter;
     }
@@ -44,7 +44,7 @@ public class FistViewModel extends ViewModel{
         }
         else {
             someData.content = text;
-            repository.someDataDAO.add(someData);
+            mainRepository.someDataDAO.add(someData);
             updateList();
             content.set("");
             hasError.set(false);
@@ -52,27 +52,17 @@ public class FistViewModel extends ViewModel{
     }
 
     void loadSavedSomeData(){
-        adapter.fistViewModel = this;
-        recyclerView.setAdapter(adapter);
         updateList();
     }
 
     void updateList(){
-        List<SomeData> someData = repository.someDataDAO.getAll();
+        List<SomeData> someData = mainRepository.someDataDAO.getAll();
         adapter.setData(someData);
     }
 
     public void delete(SomeData someData){
-        repository.someDataDAO.delete(someData);
+        mainRepository.someDataDAO.delete(someData);
         updateList();
-    }
-
-    // can be simple relocate into: public class MyBindingAdapter
-    @BindingAdapter({"app:errorText", "app:show"})
-    public static void setErrorText (EditText editText, String errorText, boolean show){
-        if (show) {
-            editText.setError(errorText);
-        }
     }
 
 }
