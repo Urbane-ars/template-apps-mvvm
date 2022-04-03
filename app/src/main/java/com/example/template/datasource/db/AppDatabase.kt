@@ -1,10 +1,9 @@
-package com.example.template.datasource.db;
+package com.example.template.datasource.db
 
-import androidx.room.Database;
-import androidx.room.RoomDatabase;
+import androidx.room.Database
+import androidx.room.RoomDatabase
 
-@Database(entities = {SomeData.class}, version = 1, exportSchema = false)
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract SomeDataDAO someDataDAO();
-
+@Database(entities = [SomeData::class], version = 1, exportSchema = false)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun someDataDAO(): SomeDataDAO
 }

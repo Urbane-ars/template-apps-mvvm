@@ -1,22 +1,9 @@
-package com.example.template.repository;
+package com.example.template.repository
 
+import com.example.template.datasource.db.SomeDataDAO
+import javax.inject.Inject
 
-
-import com.example.template.datasource.db.SomeDataDAO;
-
-import javax.inject.Inject;
-
-
-
-public class MainRepository {
-
-    public SomeDataDAO someDataDAO;
-
-
+class MainRepository @Inject constructor() {
     @Inject
-    public MainRepository(SomeDataDAO someDataDAO) {
-        this.someDataDAO = someDataDAO;
-    }
-
-
+    lateinit var someDataDAO: SomeDataDAO
 }

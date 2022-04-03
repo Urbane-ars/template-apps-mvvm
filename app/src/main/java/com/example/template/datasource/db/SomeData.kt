@@ -1,28 +1,20 @@
-package com.example.template.datasource.db;
+package com.example.template.datasource.db
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-import javax.inject.Inject;
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import javax.inject.Inject
 
 @Entity
-public class SomeData {
-   @Inject
-   public SomeData() {
-   }
+class SomeData @Inject constructor() {
 
-   @PrimaryKey(autoGenerate = true)
-   @ColumnInfo(name = "id")
-   public int id;
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id = 0
 
-   @ColumnInfo(name = "content")
-   public String content;
-
-   @NonNull
-   @Override
-   public String toString() {
-      return String.format("id: %s; content: %s ", id, content);
-   }
+    @ColumnInfo(name = "content")
+    var content: String? = null
+    override fun toString(): String {
+        return String.format("id: %s; content: %s ", id, content)
+    }
 }

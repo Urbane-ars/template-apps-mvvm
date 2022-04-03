@@ -1,44 +1,27 @@
-package com.example.template.ui;
+package com.example.template.ui
 
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.example.template.App
+import com.example.template.R
+import com.example.template.databinding.ActivityFirstBinding
+import javax.inject.Inject
 
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
-import com.example.template.App;
-import com.example.template.R;
-import com.example.template.databinding.ActivityFirstBinding;
-
-
-import javax.inject.Inject;
-
-
-public class FirstActivity extends AppCompatActivity {
+class FirstActivity : AppCompatActivity() {
 
     @Inject
-    FistViewModel viewModel;
+    lateinit var viewModel: FistViewModel
+
     @Inject
-    Adapter adapter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
-        super.onCreate(savedInstanceState);
-        ((App) getApplication()).getAppComponent().inject(this);
-        ActivityFirstBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_first);
-        binding.setFistViewModel(viewModel);
-        binding.setAdapter(adapter);
-        init();
+    lateinit var adapter: Adapter
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
+        super.onCreate(savedInstanceState)
+        (application as? App)?.appComponent?.inject(this)
+        val binding: ActivityFirstBinding = DataBindingUtil.setContentView(this, R.layout.activity_first)
+        binding.fistViewModel = viewModel
+        binding.adapter = adapter
+        viewModel.loadSavedSomeData()
     }
-
-    void init(){
-        viewModel.loadSavedSomeData();
-    }
-
-
-
-
-
-
 }

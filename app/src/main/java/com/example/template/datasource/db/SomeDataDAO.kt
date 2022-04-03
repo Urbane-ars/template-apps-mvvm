@@ -1,25 +1,18 @@
-package com.example.template.datasource.db;
+package com.example.template.datasource.db
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-
-import java.util.List;
-
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 
 @Dao
-public interface SomeDataDAO {
-
+interface SomeDataDAO {
     @Insert
-    void add(SomeData someData);
+    fun add(someData: SomeData?)
 
     @Delete
-    void delete(SomeData someData);
+    fun delete(someData: SomeData?)
 
-
-    @Query("SELECT * FROM SomeData")
-    List<SomeData> getAll();
-
-
+    @get:Query("SELECT * FROM SomeData")
+    val all: List<SomeData>?
 }

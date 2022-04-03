@@ -1,27 +1,19 @@
-package com.example.template;
+package com.example.template
 
-import android.app.Application;
+import android.app.Application
+import com.example.template.di.AppComponent
+import com.example.template.di.DaggerAppComponent
+import com.example.template.di.StorageModule
 
-import com.example.template.di.AppComponent;
-import com.example.template.di.DaggerAppComponent;
-import com.example.template.di.StorageModule;
+class App : Application() {
+    var appComponent: AppComponent? = null
+        private set
 
-
-public class App extends Application {
-    private AppComponent appComponent;
-
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
+    override fun onCreate() {
+        super.onCreate()
         appComponent = DaggerAppComponent
                 .builder()
-                .storageModule(new StorageModule(this))
-                .build();
-    }
-
-    public AppComponent getAppComponent(){
-        return appComponent;
+                .storageModule(StorageModule(this))
+                .build()
     }
 }

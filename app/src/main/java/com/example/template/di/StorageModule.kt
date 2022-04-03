@@ -1,31 +1,22 @@
-package com.example.template.di;
+package com.example.template.di
 
-import android.content.Context;
-
-import androidx.room.Room;
-
-import com.example.template.App;
-import com.example.template.datasource.db.AppDatabase;
-import com.example.template.datasource.db.SomeDataDAO;
-
-import javax.inject.Singleton;
-
-import dagger.Module;
-import dagger.Provides;
+import android.content.Context
+import androidx.room.Room
+import com.example.template.App
+import com.example.template.datasource.db.AppDatabase
+import com.example.template.datasource.db.SomeDataDAO
+import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-public class StorageModule {
-    private Context context;
-
-    public StorageModule(App app) {
-        context = app.getApplicationContext();
-    }
+class StorageModule(app: App) {
+    private val context: Context = app.applicationContext
 
     @Singleton
     @Provides
-    SomeDataDAO providesSomeDataDAO(){
-        return (Room.databaseBuilder(context, AppDatabase.class, "appData").allowMainThreadQueries().build()).someDataDAO(); // TODO asynchronously run the query
+    fun providesSomeDataDAO(): SomeDataDAO {
+        return Room.databaseBuilder(context, AppDatabase::class.java, "appData").allowMainThreadQueries().build().someDataDAO() // TODO asynchronously run the query
     }
-
 
 }

@@ -1,7 +1,6 @@
-package com.example.template.di;
+package com.example.template.di
 
-import dagger.Module;
+import dagger.Module
 
 @Module
-public class NetworkModule {
-}
+class NetworkModule 

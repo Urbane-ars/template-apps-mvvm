@@ -1,22 +1,22 @@
-package com.example.template.ui;
+package com.example.template.ui
 
-import android.widget.EditText;
+import android.widget.EditText
+import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-import androidx.databinding.BindingAdapter;
-import androidx.recyclerview.widget.RecyclerView;
-
-public class MyBindingAdapters {
-
-    @BindingAdapter({"errorText", "show"})
-    public static void setErrorText (EditText editText, String errorText, boolean show){
+object MyBindingAdapters {
+    @JvmStatic
+    @BindingAdapter("errorText", "show")
+    fun setErrorText(editText: EditText, errorText: String?, show: Boolean) {
         if (show) {
-            editText.setError(errorText);
+            editText.error = errorText
         }
     }
 
-    @BindingAdapter({"adapter"})
-    public static void bindAdapter(RecyclerView view, RecyclerView.Adapter<RecyclerView.ViewHolder> adapter){
-        view.setAdapter(adapter);
+    @JvmStatic
+    @BindingAdapter("adapter")
+    fun bindAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<ViewHolder?>?) {
+        view.adapter = adapter
     }
-
 }
